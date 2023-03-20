@@ -853,6 +853,7 @@ class Connection:
         except asyncio.CancelledError:
             # need this check for 3.7, where CancelledError
             # is subclass of Exception, not BaseException
+            await self.disconnect(nowait=True)
             raise
         except Exception:
             await self.disconnect(nowait=True)
